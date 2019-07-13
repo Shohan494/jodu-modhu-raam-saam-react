@@ -8,17 +8,18 @@ class Room extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
+		this.baseUrl = `http://localhost:8000/games/jodu-modhu-raam-shaam`;
 	}
 
-	joinRoom(gameId) {
+	joinRoom(gameId, seatNumber) {
 
 		const data =
 		{
 			playerName: this.props.username,
-			playerID: 0,
+			playerID: seatNumber,
 		};
 
-		const url = `http://localhost:8000/games/chess/${gameId}/join`;
+		const url = `${this.baseUrl}/${gameId}/join`;
 
 		const options = {
 			method: 'POST',
@@ -34,7 +35,10 @@ class Room extends Component {
 				this.props.history.push({
 					pathname: "/game",
 					state: {
-						playerCredentials: res.data.playerCredentials
+						playerCredentials: res.data.playerCredentials,
+						gameID: gameId,
+						playerID: seatNumber
+
 					}
 				});
 			}
@@ -42,9 +46,25 @@ class Room extends Component {
 	}
 
 	renderSeat() {
+		const { gameID } = this.props.room;
+
 		return this.props.room.players.map((player) => {
 			if (player.name) return <p key={player.id}>[{player.name}]</p>;
-			return <p key={player.id}>FREE</p>
+			if(this.props.joinStatus){
+				return(
+					<div>
+						<p key={player.id}>Free</p>
+					</div>
+				);
+			} else {
+				return(
+					<div>
+						<a href="#" onClick={this.joinRoom.bind(this, gameID, player.id)}  key={player.id}>Free-Join this Room</a>
+						<br />
+						<br />
+					</div>
+				);
+			}
 		}
 		);
 	}
@@ -61,9 +81,6 @@ class Room extends Component {
 					</tr>
 					<tr>
 						<td>{this.renderSeat()}</td>
-					</tr>
-					<tr>
-						<td><center><button onClick={this.joinRoom.bind(this, gameID)}>Join Room</button></center></td>
 					</tr>
 				</table>
 			</div>

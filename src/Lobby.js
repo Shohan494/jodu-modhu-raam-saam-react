@@ -7,10 +7,9 @@ import Room from './Room'
 class Lobby extends Component {
 
   constructor(props) {
-
     super(props);
     this.state = { roomList: [], joinStatus: false, username: props.location.state.username };
-    //console.log(this.state);
+    this.baseUrl = `http://localhost:8000/games/jodu-modhu-raam-shaam`;
 
   }
 
@@ -18,9 +17,9 @@ class Lobby extends Component {
 
   createRoom() {
 
-    axios.post(`http://localhost:8000/games/chess/create`,
+    axios.post(`${this.baseUrl}/create`,
       {
-        numPlayers: 2
+        numPlayers: 4
       })
       .then(res => {
         console.log(res);
@@ -35,7 +34,7 @@ class Lobby extends Component {
 
   getRoomsList() {
     console.log("works");
-    axios.get(`http://localhost:8000/games/chess`)
+    axios.get(`${this.baseUrl}`)
       .then(res => {
         // console.log(res);
         // console.log(res.data);
@@ -51,6 +50,7 @@ class Lobby extends Component {
         if (username === player.name) {
           console.log("match found, you are joined");
           this.setState({ joinStatus: true });
+
           return;
         }
 
@@ -70,6 +70,7 @@ class Lobby extends Component {
     let renderRooms = this.state.roomList.map((room) => 
       <Room 
         key={room.gameID}
+        joinStatus={this.state.joinStatus}
         history={this.props.history}
         location={this.props.location}
         room={room}

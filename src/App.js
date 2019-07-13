@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import Entry from './Entry';
 import Lobby from './Lobby';
-import Game from './Game'
+import GameRoom from './GameRoom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { browserHistory } from 'react-router';
@@ -50,7 +50,7 @@ class App extends Component {
 			<div>
 				<Route path="/" exact component={Entry} />
 				<Route path="/lobby" exact component={Lobby} />
-				<Route path="/game" exact component={Game} />
+				<Route path="/game" exact component={GameRoom} />
 			</div>
 		);
 

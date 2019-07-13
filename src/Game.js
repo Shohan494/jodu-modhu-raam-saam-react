@@ -40,23 +40,48 @@ const JMRS = Game({
   setup: (ctx) => {
 
     let deckOfCards = createDeck();
+    let playersCards = [];
+
+    playersCards.push(distributeCards(deckOfCards));
+    playersCards.push(distributeCards(deckOfCards));
+    playersCards.push(distributeCards(deckOfCards));
+    playersCards.push(distributeCards(deckOfCards));
+
     const G = {
-     player1: distributeCards(deckOfCards),
-     player2: distributeCards(deckOfCards),
-     player3: distributeCards(deckOfCards),
-     player4: distributeCards(deckOfCards)
+      playersCards : playersCards
     };
     return G;
   },
 
   moves: {
+    passCard(G, ctx, index)
+    {
+      const pCards = [...G.playersCards];
 
+      pCards[0].push(new Card("ADDDEDDDD"));
+      console.log(pCards);
+
+      //console.log(pCards[ctx.currentPlayer]);
+
+
+
+      return { ...G, pCards };
+
+      // if(ctx.currentPlayer < 3) {
+      //   G.playersCards[ctx.currentPlayer + 1].push(G.playersCards[currentPlayer][index]);
+      // }
+      // else {
+      //   G.playersCards[0].push(G.playersCards[currentPlayer][index]);
+      // }
+      // G.playersCards.splice(index, 1);
+    },
   },
-
   flow: {
     movesPerTurn: 1,
   },
 
 });
+
+
 
 export default JMRS;

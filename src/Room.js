@@ -50,16 +50,16 @@ class Room extends Component {
 
 		return this.props.room.players.map((player) => {
 			if (player.name) return <p key={player.id}>[{player.name}]</p>;
-			if(this.props.joinStatus){
-				return(
-					<div>
+			if (this.props.joinStatus) {
+				return (
+					<div key={player.id}>
 						<p key={player.id}>Free</p>
 					</div>
 				);
 			} else {
-				return(
-					<div>
-						<a href="#" onClick={this.joinRoom.bind(this, gameID, player.id)}  key={player.id}>Free-Join this Room</a>
+				return (
+					<div key={player.id}>
+						<a href="#" onClick={this.joinRoom.bind(this, gameID, player.id)} key={player.id}>Free-Join this Room</a>
 						<br />
 						<br />
 					</div>
@@ -76,12 +76,14 @@ class Room extends Component {
 		return (
 			<div>
 				<table border="3px stripe red">
-					<tr>
-						<th>Room ID: {gameID}</th>
-					</tr>
-					<tr>
-						<td>{this.renderSeat()}</td>
-					</tr>
+					<tbody>
+						<tr>
+							<th>Room ID: {gameID}</th>
+						</tr>
+						<tr>
+							<td>{this.renderSeat()}</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 

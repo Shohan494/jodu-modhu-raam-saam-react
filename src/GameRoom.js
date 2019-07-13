@@ -8,7 +8,8 @@ const JMRSClient = Client({
 	game: JMRS,
 	board: Board,
 	debug: true,
-	multiplayer: { server: "localhost:8000" }
+	multiplayer: { server: "localhost:8000" },
+	//multiplayer: { local: true },
   });
 
 
@@ -25,7 +26,7 @@ class GameRoom extends Component{
 			<div>
 				<h1>Game is On {playerCredentials}</h1>
 				
-				<JMRSClient gameID={gameID} playerID={playerID}/>
+				<JMRSClient gameID={gameID} playerID={playerID.toString()}/>
 			</div>
 		);
 		

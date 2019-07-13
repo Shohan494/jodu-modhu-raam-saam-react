@@ -16,13 +16,20 @@ class Entry extends Component{
 
   onSubmit(){
   	console.log(this.state.playerName);
-    this.props.logIn(this.state.playerName);
+    // this.props.logIn(this.state.playerName);
+    this.props.history.push({
+      pathname: "/lobby",
+      state: {
+        username: this.state.playerName
+      }
+    });
   }
 
 
 
  render()
  {
+   //console.log(this.props);
     return(
       <div>
         <h1> Enter Into Game</h1>

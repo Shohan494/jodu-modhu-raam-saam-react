@@ -28,11 +28,17 @@ class Room extends Component {
 		};
 
 		axios(options).then(res => {
-			console.log(res);
 			console.log(res.data);
+			if (res.data.playerCredentials) {
 
+				this.props.history.push({
+					pathname: "/game",
+					state: {
+						playerCredentials: res.data.playerCredentials
+					}
+				});
+			}
 		});
-
 	}
 
 	renderSeat() {
@@ -44,22 +50,18 @@ class Room extends Component {
 	}
 
 	render() {
-		//console.log(this.renderSeat());
+		console.log(this.props);
 		const { gameID } = this.props.room;
 
 		return (
-
 			<div>
-
 				<table border="3px stripe red">
 					<tr>
 						<th>Room ID: {gameID}</th>
 					</tr>
-
 					<tr>
 						<td>{this.renderSeat()}</td>
 					</tr>
-
 					<tr>
 						<td><center><button onClick={this.joinRoom.bind(this, gameID)}>Join Room</button></center></td>
 					</tr>

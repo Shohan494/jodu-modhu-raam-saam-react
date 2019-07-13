@@ -7,8 +7,12 @@ class Game extends Component{
 	}
 
 	render(){
+			console.log(this.props);
+		return(
 
-		<h1>Game is On</h1>
+			<h1>Game is On {this.props.location.state.playerCredentials}</h1>
+		);
+
 
 	}
 }

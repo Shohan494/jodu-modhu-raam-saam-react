@@ -67,10 +67,15 @@ class Lobby extends Component {
   render() {
 
     let username = this.state.username;
-    let renderRooms = this.state.roomList.map((room) => <Room key={room.gameID} room={room} username={username} />);
-    // let renderRooms = this.state.list.map( (room, key) => <a href="#" onClick={this.joinRoom.bind(this, room.gameID)} key={room.id}>  {room.gameID} #### -- ####</a> );
+    let renderRooms = this.state.roomList.map((room) => 
+      <Room 
+        key={room.gameID}
+        history={this.props.history}
+        location={this.props.location}
+        room={room}
+        username={username}
+      />);
  
-
     return (
       <div>
         <h1>Lobby</h1>

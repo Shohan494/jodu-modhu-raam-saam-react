@@ -26,7 +26,11 @@ class GameRoom extends Component{
 			<div>
 				<h1>Game is On {playerCredentials}</h1>
 				
-				<JMRSClient gameID={gameID} playerID={playerID.toString()}/>
+				<JMRSClient 
+					gameID={gameID} 
+					playerID={playerID.toString()}
+					credentials={playerCredentials}
+				/>
 			</div>
 		);
 		

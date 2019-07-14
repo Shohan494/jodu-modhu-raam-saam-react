@@ -14,7 +14,6 @@ const createDeck = function () {
     }
   });
   return deck;
-  
 }
 
 

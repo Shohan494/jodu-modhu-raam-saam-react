@@ -1,5 +1,5 @@
 import { Server } from 'boardgame.io/server';
-import JMRS from './game';
+import { JMRS } from './game';
 
 const PORT = process.env.PORT || 8000;
 

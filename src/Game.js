@@ -1,5 +1,19 @@
 import { Game } from 'boardgame.io/core';
 
+const CARD_NAMES = {
+  JODU: "jodu",
+  MODHU: "modhu",
+  RAAM: "raam",
+  SHAAM: "shaam"
+}
+
+const CARD_GENERIC_NAMES = {
+  JODU: "যদু",
+  MODHU: "মধু",
+  RAAM: "রাম",
+  SHAAM: "সাম"
+} 
+
 const Card = function (id, name) {
   this.id = id;
   this.name = name;
@@ -7,7 +21,7 @@ const Card = function (id, name) {
 
 
 const createDeck = function () {
-  let names = ["jodu", "modhu", "raam", "shaam"];
+  let names = [CARD_NAMES.JODU, CARD_NAMES.MODHU, CARD_NAMES.RAAM, CARD_NAMES.SHAAM];
   let deck = [];
   let id = 0;
   names.forEach(name => {
@@ -85,4 +99,4 @@ const JMRS = Game({
 
 
 
-export default JMRS;
+export { CARD_NAMES, CARD_GENERIC_NAMES, JMRS };

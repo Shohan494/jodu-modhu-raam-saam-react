@@ -62,7 +62,12 @@ const JMRS = Game({
 
       let cards = G.playersCards;
       let currentPlayer = ctx.currentPlayer;
-      let nextPlayer = (Number(ctx.currentPlayer) + 1).toString()
+      let nextPlayer = '0';
+
+      if(Number(currentPlayer) <3 ){
+        nextPlayer = (Number(ctx.currentPlayer) + 1).toString();
+      }
+      
 
       cards[nextPlayer].push(cards[currentPlayer][index]);
       cards[currentPlayer].splice(index, 1);

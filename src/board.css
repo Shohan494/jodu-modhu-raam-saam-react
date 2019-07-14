@@ -1,3 +1,9 @@
+.board-container{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
 .card-container{
     display: flex;
     flex: 1;

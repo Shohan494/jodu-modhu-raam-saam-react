@@ -20,19 +20,13 @@ class Board extends Component {
         this.state = {};
     }
 
-    passCard() {
-        this.props.moves.passCard(0);
-        //this.props.events.endTurn();
-        //console.log(reply);
-    }
-
     renderCard = () => {
 
         return this.props.G.playersCards[this.props.playerID].map((card, index) =>
-            <Card 
-                key={card.id} 
-                name={card.name} 
-                move={this.props.moves.passCard} 
+            <Card
+                key={card.id}
+                name={card.name}
+                move={this.props.moves.passCard}
                 index={index}
             />
         );
@@ -41,10 +35,7 @@ class Board extends Component {
     render() {
         console.log(this.props);
         return (
-            <div>
-                <div>
-                    <button onClick={this.passCard.bind(this)}>Pass Card</button>
-                </div>
+            <div className="board-container">
                 <div className="card-container">
                     {this.renderCard()}
                 </div>

@@ -8,5 +8,5 @@ const server = Server({
 });
 
 server.run(PORT, () => {
-    console.log(`Serving at: http://localhost:${PORT}/`);
-  });
+  console.log(`Serving at: http://localhost:${PORT}/`);
+});

@@ -22,8 +22,8 @@ class Lobby extends Component {
         numPlayers: 4
       })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
 
         this.getRoomsList();
       });
@@ -33,7 +33,7 @@ class Lobby extends Component {
   }
 
   getRoomsList() {
-    console.log("works");
+    // console.log("works");
     axios.get(`${this.baseUrl}`)
       .then(res => {
         // console.log(res);
@@ -60,15 +60,14 @@ class Lobby extends Component {
   }
 
   componentDidMount() {
-    console.log("Did mount");
     this.getRoomsList();
   }
 
   render() {
 
     let username = this.state.username;
-    let renderRooms = this.state.roomList.map((room) => 
-      <Room 
+    let renderRooms = this.state.roomList.map((room) =>
+      <Room
         key={room.gameID}
         joinStatus={this.state.joinStatus}
         history={this.props.history}
@@ -76,7 +75,7 @@ class Lobby extends Component {
         room={room}
         username={username}
       />);
- 
+
     return (
       <div>
         <h1>Lobby</h1>
@@ -104,10 +103,4 @@ class Lobby extends Component {
 }
 
 
-
-
-
 export default Lobby;
-
-
-// 166 39 71

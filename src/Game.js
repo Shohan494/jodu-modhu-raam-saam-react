@@ -12,7 +12,7 @@ const CARD_GENERIC_NAMES = {
   MODHU: "মধু",
   RAAM: "রাম",
   SHAAM: "সাম"
-} 
+}
 
 const Card = function (id, name) {
   this.id = id;
@@ -75,16 +75,16 @@ const JMRS = Game({
   },
 
   moves: {
-    passCard:function(G, ctx, index) {
+    passCard: function (G, ctx, index) {
 
       let cards = G.playersCards;
       let currentPlayer = ctx.currentPlayer;
       let nextPlayer = '0';
 
-      if(Number(currentPlayer) <3 ){
+      if (Number(currentPlayer) < 3) {
         nextPlayer = (Number(ctx.currentPlayer) + 1).toString();
       }
-      
+
 
       cards[nextPlayer].push(cards[currentPlayer][index]);
       cards[currentPlayer].splice(index, 1);

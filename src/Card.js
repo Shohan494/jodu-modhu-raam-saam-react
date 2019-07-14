@@ -31,7 +31,7 @@ export default class Card extends Component {
 
         return (
             <div className="card" onClick={this.move}>
-                <p>{genericName}</p>
+                {genericName}
             </div>
         )
     }

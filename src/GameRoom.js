@@ -8,7 +8,7 @@ const JMRSClient = Client({
 	game: JMRS,
 	board: Board,
 	debug: true,
-	multiplayer: { server: "localhost:8000" },
+	multiplayer: { server: "http://localhost:8000" },
 	//multiplayer: { local: true },
   });
 

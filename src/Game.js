@@ -1,15 +1,15 @@
 import { Game } from 'boardgame.io/core';
 
-const Card = function(name){
-  this.name = name; 
+const Card = function (name) {
+  this.name = name;
 };
 
 
-const createDeck = function(){
+const createDeck = function () {
   let names = ["jodu", "modhu", "raam", "shaam"];
   let deck = [];
   names.forEach(name => {
-    for(let i=1; i<=4; i++){
+    for (let i = 1; i <= 4; i++) {
       deck.push(new Card(name));
     }
   });
@@ -22,10 +22,9 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-const distributeCards = function(deck)
-{
+const distributeCards = function (deck) {
   let serve = [];
-  for(let i=1; i<=4; i++){
+  for (let i = 1; i <= 4; i++) {
     let random = getRandomInt(deck.length);
     serve.push(deck[random]);
     deck.splice(random, 1);
@@ -36,7 +35,7 @@ const distributeCards = function(deck)
 
 const JMRS = Game({
   name: 'jodu-modhu-raam-shaam',
-  
+
   setup: (ctx) => {
 
     let deckOfCards = createDeck();
@@ -48,27 +47,71 @@ const JMRS = Game({
     playersCards.push(distributeCards(deckOfCards));
 
     const G = {
-      playersCards : playersCards
+      playersCards: {
+        player0: [0, 0, 0, 0],
+        player1: [1, 1, 1, 1],
+        player2: [2, 2, 2, 2],
+        player3: [3, 3, 3, 3],
+      }
     };
     return G;
   },
 
   moves: {
-    passCard(G, ctx, index)
-    {
-      const pCards = [...G.playersCards];
+    passCard:function(G, ctx, index) {
 
-      pCards[0].push(new Card("ADDDEDDDD"));
-      console.log(pCards);
+      //console.log(G.playersCards.player0);
+      switch (ctx.currentPlayer) {
+        case '0':
+          G.playersCards.player1.push(G.playersCards.player0[index]);
+          G.playersCards.player0.splice(index, 1);
+        case '1':
+          G.playersCards.player2.push(G.playersCards.player1[index]);
+          G.playersCards.player1.splice(index, 1);
+        case '2':
+          G.playersCards.player3.push(G.playersCards.player2[index]);
+          G.playersCards.player2.splice(index, 1);
+        case '3':
+          G.playersCards.player0.push(G.playersCards.player3[index]);
+          G.playersCards.player3.splice(index, 1);
+      }
+
+
+
+      // if (ctx.currentPlayer < 3) {
+      //   arr.playersCards[ctx.currentPlayer + 1].push(arr.playersCards[currentPlayer][index]);
+      // }
+      // else {
+      //   arr.playersCards[0].push(arr.playersCards[currentPlayer][index]);
+      // }
+
+
+
+      // G.playersCards.push(new Card("Aziz"));
+      //console.log(G);
+      // let next;
+      // if(ctx.currentPlayer < 3) next = ctx.currentPlayer + 1;
+      // else next = 0;
+
+      // let a = Object.assign([...G]);
+      // console.log(a);
+      // return { ...G };
+
+      // let pCards = [...G.playersCards];
+
+      // let arr = pCards.slice();
+
+      //pCards[0].push(new Card("ADDDEDDDD"));
+      //console.log(arr);
 
       //console.log(pCards[ctx.currentPlayer]);
 
 
 
-      return { ...G, pCards };
+      //return { ...G, pCards };
 
       // if(ctx.currentPlayer < 3) {
-      //   G.playersCards[ctx.currentPlayer + 1].push(G.playersCards[currentPlayer][index]);
+      //   console.log( original(G));
       // }
       // else {
       //   G.playersCards[0].push(G.playersCards[currentPlayer][index]);
@@ -77,7 +120,7 @@ const JMRS = Game({
     },
   },
   flow: {
-    movesPerTurn: 1,
+    movesPerTurn: 1
   },
 
 });

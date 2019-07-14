@@ -60,20 +60,24 @@ const JMRS = Game({
   moves: {
     passCard:function(G, ctx, index) {
 
-      //console.log(G.playersCards.player0);
+
       switch (ctx.currentPlayer) {
         case '0':
           G.playersCards.player1.push(G.playersCards.player0[index]);
           G.playersCards.player0.splice(index, 1);
+          break;
         case '1':
           G.playersCards.player2.push(G.playersCards.player1[index]);
           G.playersCards.player1.splice(index, 1);
+          break;
         case '2':
           G.playersCards.player3.push(G.playersCards.player2[index]);
           G.playersCards.player2.splice(index, 1);
+          break;
         case '3':
           G.playersCards.player0.push(G.playersCards.player3[index]);
           G.playersCards.player3.splice(index, 1);
+          break;
       }
 
 

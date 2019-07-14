@@ -48,10 +48,10 @@ const JMRS = Game({
 
     const G = {
       playersCards: {
-        player0: [0, 0, 0, 0],
-        player1: [1, 1, 1, 1],
-        player2: [2, 2, 2, 2],
-        player3: [3, 3, 3, 3],
+        player0: playersCards[0],
+        player1: playersCards[1],
+        player2: playersCards[2],
+        player3: playersCards[3],
       }
     };
     return G;
@@ -80,47 +80,6 @@ const JMRS = Game({
           break;
       }
 
-
-
-      // if (ctx.currentPlayer < 3) {
-      //   arr.playersCards[ctx.currentPlayer + 1].push(arr.playersCards[currentPlayer][index]);
-      // }
-      // else {
-      //   arr.playersCards[0].push(arr.playersCards[currentPlayer][index]);
-      // }
-
-
-
-      // G.playersCards.push(new Card("Aziz"));
-      //console.log(G);
-      // let next;
-      // if(ctx.currentPlayer < 3) next = ctx.currentPlayer + 1;
-      // else next = 0;
-
-      // let a = Object.assign([...G]);
-      // console.log(a);
-      // return { ...G };
-
-      // let pCards = [...G.playersCards];
-
-      // let arr = pCards.slice();
-
-      //pCards[0].push(new Card("ADDDEDDDD"));
-      //console.log(arr);
-
-      //console.log(pCards[ctx.currentPlayer]);
-
-
-
-      //return { ...G, pCards };
-
-      // if(ctx.currentPlayer < 3) {
-      //   console.log( original(G));
-      // }
-      // else {
-      //   G.playersCards[0].push(G.playersCards[currentPlayer][index]);
-      // }
-      // G.playersCards.splice(index, 1);
     },
   },
   flow: {

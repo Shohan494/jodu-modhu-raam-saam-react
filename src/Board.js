@@ -29,7 +29,12 @@ class Board extends Component {
     renderCard = () => {
 
         return this.props.G.playersCards[this.props.playerID].map((card, index) =>
-            <Card key={index} name={card.name} move={this.props.moves.passCard} index={index}/>
+            <Card 
+                key={card.id} 
+                name={card.name} 
+                move={this.props.moves.passCard} 
+                index={index}
+            />
         );
     }
 

@@ -1,6 +1,7 @@
 import { Game } from 'boardgame.io/core';
 
-const Card = function (name) {
+const Card = function (id, name) {
+  this.id = id;
   this.name = name;
 };
 
@@ -8,9 +9,11 @@ const Card = function (name) {
 const createDeck = function () {
   let names = ["jodu", "modhu", "raam", "shaam"];
   let deck = [];
+  let id = 0;
   names.forEach(name => {
     for (let i = 1; i <= 4; i++) {
-      deck.push(new Card(name));
+      deck.push(new Card(id, name));
+      id++;
     }
   });
   return deck;

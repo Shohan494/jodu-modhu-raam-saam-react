@@ -1,18 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Entry from './Entry';
 import Lobby from './Lobby';
 import GameRoom from './GameRoom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { browserHistory } from 'react-router';
 
 class App extends Component {
-
 	constructor() {
 		super();
 		this.state = { loggedIn: false, username: '', joinStatus: false, redirect: true };
-
 	}
 
 	//DUE TO USING ROUTE, UNNECCESARY
@@ -27,9 +25,7 @@ class App extends Component {
 		this.setState({ joinStatus: status });
 	}
 
-
 	render() {
-
 		// if (this.state.loggedIn) {
 		// 	console.log("Logged in");
 
@@ -53,10 +49,7 @@ class App extends Component {
 				<Route path="/game" exact component={GameRoom} />
 			</div>
 		);
-
 	}
 }
 
-
 export default App;
-

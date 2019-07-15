@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import qs from 'qs';
 
 class Room extends Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {};
@@ -12,11 +11,9 @@ class Room extends Component {
 	}
 
 	joinRoom(gameId, seatNumber) {
-
-		const data =
-		{
+		const data = {
 			playerName: this.props.username,
-			playerID: seatNumber,
+			playerID: seatNumber
 		};
 
 		const url = `${this.baseUrl}/${gameId}/join`;
@@ -25,20 +22,18 @@ class Room extends Component {
 			method: 'POST',
 			headers: { 'content-type': 'application/x-www-form-urlencoded' },
 			data: qs.stringify(data),
-			url,
+			url
 		};
 
-		axios(options).then(res => {
+		axios(options).then((res) => {
 			console.log(res.data);
 			if (res.data.playerCredentials) {
-
 				this.props.history.push({
-					pathname: "/game",
+					pathname: '/game',
 					state: {
 						playerCredentials: res.data.playerCredentials,
 						gameID: gameId,
 						playerID: seatNumber
-
 					}
 				});
 			}
@@ -59,14 +54,15 @@ class Room extends Component {
 			} else {
 				return (
 					<div key={player.id}>
-						<a href="#" onClick={this.joinRoom.bind(this, gameID, player.id)} key={player.id}>Free-Join this Room</a>
+						<a href="#" onClick={this.joinRoom.bind(this, gameID, player.id)} key={player.id}>
+							Free-Join this Room
+						</a>
 						<br />
 						<br />
 					</div>
 				);
 			}
-		}
-		);
+		});
 	}
 
 	render() {
@@ -86,11 +82,8 @@ class Room extends Component {
 					</tbody>
 				</table>
 			</div>
-
 		);
-
 	}
-
 }
 
 export default Room;

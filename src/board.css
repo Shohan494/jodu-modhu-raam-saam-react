@@ -1,12 +1,12 @@
-.board-container{
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+.board-container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 }
 
-.card-container{
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    flex-direction: row;
+.card-container {
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	flex-direction: row;
 }

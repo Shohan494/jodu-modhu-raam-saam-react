@@ -1,0 +1,19 @@
+.board-container {
+	display: flex;
+	flex: 4;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.column {
+	flex-direction: column;
+}
+
+.card-container {
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+}

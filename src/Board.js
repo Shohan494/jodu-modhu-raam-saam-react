@@ -1,57 +1,52 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import Card from './Card';
+import './board.css';
 
 class Board extends Component {
+	static propTypes = {
+		G: PropTypes.any.isRequired,
+		ctx: PropTypes.any.isRequired,
+		moves: PropTypes.any.isRequired,
+		playerID: PropTypes.string,
+		isActive: PropTypes.bool,
+		isMultiplayer: PropTypes.bool
+	};
 
-    static propTypes = {
-      G: PropTypes.any.isRequired,
-      ctx: PropTypes.any.isRequired,
-      moves: PropTypes.any.isRequired,
-      playerID: PropTypes.string,
-      isActive: PropTypes.bool,
-      isMultiplayer: PropTypes.bool,
-    };
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
 
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+	renderCard = (playerID) => {
+		return this.props.G.playersCards[playerID].map((card, index) => (
+			<Card key={card.id} name={card.name} move={this.props.moves.passCard} index={index} />
+		));
+	};
 
-    passCard(){
-        this.props.moves.passCard( 0 );
-        //this.props.events.endTurn();
-        //console.log(reply);
-    }
+	//for display position
+	//current player will sit bottom
+	getPlayerByPosition(position) {
+		let playerID = Number(this.props.playerID);
 
-    render() {
-        return(
-            <div>
-                
-                <div>
-                    <button onClick={this.passCard.bind(this)}>Pass Card</button>
-                </div>
-                
-                <div>
+		return playerID + position <= 3 ? (playerID + position).toString() : '0';
+	}
 
-                </div>
-                
-                <div>
+	render() {
+		// console.log(this.props);
 
-                </div>
-                
-                <div>
-
-                </div>
-
-            </div>
-        );
-
-
-    }
-
-
+		return (
+			<div className={'board-container column'}>
+				<div className="card-container row">{this.renderCard(this.getPlayerByPosition(2))}</div>
+				<div className="board-container row">
+					<div className="card-container column">{this.renderCard(this.getPlayerByPosition(3))}</div>
+					<div className="card-container column">{this.renderCard(this.getPlayerByPosition(1))}</div>
+				</div>
+				<div className="card-container row">{this.renderCard(this.getPlayerByPosition(0))}</div>
+			</div>
+		);
+	}
 }
-
 
 export default Board;
